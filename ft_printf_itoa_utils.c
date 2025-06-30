@@ -6,7 +6,7 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 14:49:09 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/28 14:49:43 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/06/30 16:06:25 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	*ft_putstr_nbr(unsigned int n, char *str_con, size_t str_con_len)
 	return (str_con);
 }
 
-char	*ft_itoa_unsgineds(unsigned int n)
+char	*ft_itoa_unsgined(unsigned int n)
 {
 	size_t	str_con_len;
 	char	*str_con;
