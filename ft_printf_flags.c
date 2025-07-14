@@ -6,55 +6,36 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 21:12:15 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/30 21:13:52 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/07/02 11:09:42 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	check ft_format(int *format)
+#include "ft_printf.h"
+
+int ft_format(int format, va_list args)
 {
-	if (format[i] == sign && format[i + 1] == 's')
-		{
+	int count;
+	char sign;
+
+	count = 0;
+	sign = '%';
+	if (format == 's')
 			count += ft_putstr(va_arg(args, char *));
-		i += 2;
-		}
-		else if(format[i] == sign && format[i + 1] == sign)
-		{
+		else if(format == sign)
 			count += ft_putchar(sign);
-		i += 2;
-		}
-		else if (format[i] == sign && format[i + 1] == 'c')
-		{
+		else if (format == 'c')
 			count += ft_putchar(va_arg(args, int));
-		i += 2;
-		}
-		else if (format[i] == sign && format[i + 1] == 'd')
-		{
-			count += ft_putstr(ft_itoa(va_arg(args, int)));
-		i += 2;
-		}
-		else if(format[i] == sign && format[i + 1] == 'i')
-		{
-			count += ft_putstr(ft_itoa(va_arg(args, int)));
-		i += 2;
-		}
-		else if(format[i] == sign && format[i + 1] == 'u')
-		{
-			count += ft_putstr(ft_itoa_unsgined(va_arg(args, unsigned int)));
-		i += 2;
-		}
-		else if(format[i] == sign && format[i + 1] == 'x')
-		{
+		else if (format == 'd')
+			count += ft_putstr_itoa(ft_itoa(va_arg(args, int)));
+		else if(format == 'i')
+			count += ft_putstr_itoa(ft_itoa(va_arg(args, int)));
+		else if(format == 'u')
+			count += ft_putstr_itoa(ft_itoa_unsgined(va_arg(args, unsigned int)));
+		else if(format == 'x')
 			count += ft_print_hex_lower(va_arg(args, unsigned int));
-		i += 2;
-		}
-		else if(format[i] == sign && format[i + 1] == 'X')
-		{
+		else if(format == 'X')
 			count += ft_print_hex_upper(va_arg(args, unsigned int));
-		i += 2;
-		}
-		else if(format[i] == sign && format[i + 1] == 'p')
-		{
+		else if(format == 'p')
 			count += p_hex(va_arg(args, void *));
-		i += 2;
-		}
+	return(count);
 }

@@ -6,11 +6,11 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 14:49:09 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/30 16:06:25 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/07/02 10:57:10 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "print.h"
+#include "ft_printf.h"
 
 static int	ft_putnbr_len(unsigned int n)
 {

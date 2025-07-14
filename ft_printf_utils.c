@@ -6,16 +6,18 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 19:27:03 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/06/30 21:01:49 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/07/02 11:35:55 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "print.h"
+#include "ft_printf.h"
 
 int	ft_putstr(char *s)
 {
 	int	i;
 
+	if (!s)
+		return (ft_putstr("(null)"));
 	i = 0;
 	while (s[i] != '\0')
 	{
@@ -54,16 +56,17 @@ int	ft_print_hex_upper(unsigned long s)
 	len = 0;
 	if (s >= 16)
 	{
-		ft_print_hex_upper(s / 16);
-		(len)++;
+		len += ft_print_hex_upper(s / 16);
 	}
-	write(1, &HEX_UPPER[s % 16], 1);
+	len += ft_putchar(HEX_UPPER[s % 16]);
 	return (len);
 }
 int p_hex(void *p)
 {
 	int	i;
 	unsigned long x;
+	if(!p)
+		return (ft_putstr("(nil)"));
 
 	i = 0;
 	x = (unsigned long)p;
