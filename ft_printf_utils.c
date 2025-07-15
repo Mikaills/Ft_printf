@@ -6,7 +6,7 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 19:27:03 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/07/02 11:35:55 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/07/14 17:09:18 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_putchar(int c)
 	i = 1;
 	write(1, &c, 1);
 	return (i);
-} 
+}
 
 int	ft_print_hex_lower(unsigned long s)
 {
@@ -61,13 +61,14 @@ int	ft_print_hex_upper(unsigned long s)
 	len += ft_putchar(HEX_UPPER[s % 16]);
 	return (len);
 }
-int p_hex(void *p)
-{
-	int	i;
-	unsigned long x;
-	if(!p)
-		return (ft_putstr("(nil)"));
 
+int	p_hex(void *p)
+{
+	int				i;
+	unsigned long	x;
+
+	if (!p)
+		return (ft_putstr("(nil)"));
 	i = 0;
 	x = (unsigned long)p;
 	i += ft_putstr("0x");

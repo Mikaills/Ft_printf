@@ -6,41 +6,40 @@
 /*   By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 12:47:23 by bahkaya           #+#    #+#             */
-/*   Updated: 2025/07/14 13:53:27 by bahkaya          ###   ########.fr       */
+/*   Updated: 2025/07/15 13:37:11 by bahkaya          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
-int ft_printf(const char *format,...)
+int	ft_printf(const char *format, ...)
 {
-	va_list args;
-	va_start (args, format);
+	int		count;
+	va_list	args;
 
-	int i;
-	int count;
-	i = 0;
+	va_start (args, format);
 	count = 0;
-	int sign = '%';
-	while (format[i])
+	while (*format)
 	{
-		if (format[i] == sign && format[i + 1] != ft_format(format[i + 1], args))
-			return (count += ft_flags_check(format));
-		if (format[i] == sign)
+		if (format[0])
 		{
-			count += ft_format(format[i + 1], args);
-			i += 2;
+			count += ft_flags_check(format);
+			if (count == -1)
+				return (count);
 		}
-		else if (format[i] != sign)
+		if (*format == '%')
 		{
-			count += ft_putchar(format[i]);
-			i += 1;
+			count += ft_format(*(format + 1), args);
+			format += 2;
 		}
+		else if (*format != '%')
+			count += ft_putchar(*format++);
 	}
 	va_end(args);
-	return(count);
+	return (count);
 }
-int ft_putstr_itoa(char *s)
+
+int	ft_putstr_itoa(char *s)
 {
 	int	i;
 
@@ -51,5 +50,17 @@ int ft_putstr_itoa(char *s)
 		i++;
 	}
 	free(s);
+	return (i);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		i++;
+	}
 	return (i);
 }
