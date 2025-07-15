@@ -6,7 +6,7 @@
 #    By: bahkaya <bahkaya@student.42istanbul.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/27 19:27:15 by bahkaya           #+#    #+#              #
-#    Updated: 2025/07/15 13:40:35 by bahkaya          ###   ########.fr        #
+#    Updated: 2025/07/15 14:43:13 by bahkaya          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,20 +27,20 @@ OBJC = $(SRCS:.c=.o)
 all:  $(NAME)
 
 $(NAME): $(OBJC)
-	ar rcs $(NAME) $(OBJC) 
+	@ar rcs $(NAME) $(OBJC)
 
 clean:
 
-	rm -rf $(OBJC)
+	@rm -rf $(OBJC)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 
 .PHONY: all clean fclean re
 
 comp:
-	$(CC) main.c $(NAME) $(LIBFT)
+	@$(CC) $(CFLAGS) main.c $(NAME) $(LIBFT)
 run: comp
 	@./a.out
